@@ -1,33 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url><loc>https://YOUR-GITHUB-USERNAME.github.io/free-vin-check-australia/</loc><lastmod>2026-11-24</lastmod><priority>1.0</priority></url>
-<url><loc>https://YOUR-GITHUB-USERNAME.github.io/free-vin-check-australia/about/</loc><lastmod>2026-11-24</lastmod><priority>0.7</priority></url>
-<url><loc>https://YOUR-GITHUB-USERNAME.github.io/free-vin-check-australia/caravan-vin-check/</loc><lastmod>2026-11-24</lastmod><priority>0.7</priority></url>
-<url><loc>https://YOUR-GITHUB-USERNAME.github.io/free-vin-check-australia/contact/</loc><lastmod>2026-11-24</lastmod><priority>0.7</priority></url>
-<url><loc>https://YOUR-GITHUB-USERNAME.github.io/free-vin-check-australia/disclaimer/</loc><lastmod>2026-11-24</lastmod><priority>0.7</priority></url>
-<url><loc>https://YOUR-GITHUB-USERNAME.github.io/free-vin-check-australia/ford-vin-decoder-australia/</loc><lastmod>2026-11-24</lastmod><priority>0.7</priority></url>
-<url><loc>https://YOUR-GITHUB-USERNAME.github.io/free-vin-check-australia/holden-vin-decoder-australia/</loc><lastmod>2026-11-24</lastmod><priority>0.7</priority></url>
-<url><loc>https://YOUR-GITHUB-USERNAME.github.io/free-vin-check-australia/mazda-vin-decoder-australia/</loc><lastmod>2026-11-24</lastmod><priority>0.7</priority></url>
-<url><loc>https://YOUR-GITHUB-USERNAME.github.io/free-vin-check-australia/motorcycle-vin-check/</loc><lastmod>2026-11-24</lastmod><priority>0.7</priority></url>
-<url><loc>https://YOUR-GITHUB-USERNAME.github.io/free-vin-check-australia/ppsr-check/</loc><lastmod>2026-11-24</lastmod><priority>0.7</priority></url>
-<url><loc>https://YOUR-GITHUB-USERNAME.github.io/free-vin-check-australia/privacy-policy/</loc><lastmod>2026-11-24</lastmod><priority>0.7</priority></url>
-<url><loc>https://YOUR-GITHUB-USERNAME.github.io/free-vin-check-australia/rego-check-australia/</loc><lastmod>2026-11-24</lastmod><priority>0.7</priority></url>
-<url><loc>https://YOUR-GITHUB-USERNAME.github.io/free-vin-check-australia/tools/</loc><lastmod>2026-11-24</lastmod><priority>0.7</priority></url>
-<url><loc>https://YOUR-GITHUB-USERNAME.github.io/free-vin-check-australia/toyota-vin-decoder-australia/</loc><lastmod>2026-11-24</lastmod><priority>0.7</priority></url>
-<url><loc>https://YOUR-GITHUB-USERNAME.github.io/free-vin-check-australia/used-car-buying-checklist/</loc><lastmod>2026-11-24</lastmod><priority>0.7</priority></url>
-<url><loc>https://YOUR-GITHUB-USERNAME.github.io/free-vin-check-australia/vehicle-history-check/</loc><lastmod>2026-11-24</lastmod><priority>0.7</priority></url>
-<url><loc>https://YOUR-GITHUB-USERNAME.github.io/free-vin-check-australia/vehicle-recall-check/</loc><lastmod>2026-11-24</lastmod><priority>0.7</priority></url>
-<url><loc>https://YOUR-GITHUB-USERNAME.github.io/free-vin-check-australia/vehicle-theft-check-australia/</loc><lastmod>2026-11-24</lastmod><priority>0.7</priority></url>
-<url><loc>https://YOUR-GITHUB-USERNAME.github.io/free-vin-check-australia/vin-check-act/</loc><lastmod>2026-11-24</lastmod><priority>0.7</priority></url>
-<url><loc>https://YOUR-GITHUB-USERNAME.github.io/free-vin-check-australia/vin-check-nsw/</loc><lastmod>2026-11-24</lastmod><priority>0.7</priority></url>
-<url><loc>https://YOUR-GITHUB-USERNAME.github.io/free-vin-check-australia/vin-check-nt/</loc><lastmod>2026-11-24</lastmod><priority>0.7</priority></url>
-<url><loc>https://YOUR-GITHUB-USERNAME.github.io/free-vin-check-australia/vin-check-qld/</loc><lastmod>2026-11-24</lastmod><priority>0.7</priority></url>
-<url><loc>https://YOUR-GITHUB-USERNAME.github.io/free-vin-check-australia/vin-check-sa/</loc><lastmod>2026-11-24</lastmod><priority>0.7</priority></url>
-<url><loc>https://YOUR-GITHUB-USERNAME.github.io/free-vin-check-australia/vin-check-tas/</loc><lastmod>2026-11-24</lastmod><priority>0.7</priority></url>
-<url><loc>https://YOUR-GITHUB-USERNAME.github.io/free-vin-check-australia/vin-check-vic/</loc><lastmod>2026-11-24</lastmod><priority>0.7</priority></url>
-<url><loc>https://YOUR-GITHUB-USERNAME.github.io/free-vin-check-australia/vin-check-wa/</loc><lastmod>2026-11-24</lastmod><priority>0.7</priority></url>
-<url><loc>https://YOUR-GITHUB-USERNAME.github.io/free-vin-check-australia/vin-compare/</loc><lastmod>2026-11-24</lastmod><priority>0.7</priority></url>
-<url><loc>https://YOUR-GITHUB-USERNAME.github.io/free-vin-check-australia/vin-vs-rego/</loc><lastmod>2026-11-24</lastmod><priority>0.7</priority></url>
-<url><loc>https://YOUR-GITHUB-USERNAME.github.io/free-vin-check-australia/what-is-a-vin-number/</loc><lastmod>2026-11-24</lastmod><priority>0.7</priority></url>
-<url><loc>https://YOUR-GITHUB-USERNAME.github.io/free-vin-check-australia/where-to-find-vin-number/</loc><lastmod>2026-11-24</lastmod><priority>0.7</priority></url>
+
+  <url>
+    <loc>https://free-vin-check-australia.github.io/</loc>
+    <lastmod>2026-11-24</lastmod>
+    <priority>1.0</priority>
+  </url>
+
+  <url><loc>https://free-vin-check-australia.github.io/about/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://free-vin-check-australia.github.io/caravan-vin-check/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://free-vin-check-australia.github.io/contact/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://free-vin-check-australia.github.io/disclaimer/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://free-vin-check-australia.github.io/ford-vin-decoder-australia/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://free-vin-check-australia.github.io/holden-vin-decoder-australia/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://free-vin-check-australia.github.io/mazda-vin-decoder-australia/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://free-vin-check-australia.github.io/motorcycle-vin-check/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://free-vin-check-australia.github.io/ppsr-check/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://free-vin-check-australia.github.io/privacy-policy/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://free-vin-check-australia.github.io/rego-check-australia/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://free-vin-check-australia.github.io/tools/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://free-vin-check-australia.github.io/toyota-vin-decoder-australia/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://free-vin-check-australia.github.io/used-car-buying-checklist/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://free-vin-check-australia.github.io/vehicle-history-check/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://free-vin-check-australia.github.io/vehicle-recall-check/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://free-vin-check-australia.github.io/vehicle-theft-check-australia/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://free-vin-check-australia.github.io/vin-check-act/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://free-vin-check-australia.github.io/vin-check-nsw/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://free-vin-check-australia.github.io/vin-check-nt/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://free-vin-check-australia.github.io/vin-check-qld/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://free-vin-check-australia.github.io/vin-check-sa/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://free-vin-check-australia.github.io/vin-check-tas/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://free-vin-check-australia.github.io/vin-check-vic/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://free-vin-check-australia.github.io/vin-check-wa/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://free-vin-check-australia.github.io/vin-compare/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://free-vin-check-australia.github.io/vin-vs-rego/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://free-vin-check-australia.github.io/what-is-a-vin-number/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://free-vin-check-australia.github.io/where-to-find-vin-number/</loc><lastmod>2026-11-24</lastmod></url>
+
 </urlset>
