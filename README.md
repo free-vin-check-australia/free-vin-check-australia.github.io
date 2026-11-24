@@ -23,6 +23,15 @@ Before submitting the site to search engines:
 
 You can find remaining placeholders by searching the repository for `YOUR-DOMAIN.com`.
 
+## Additional tools and official Australian links
+
+- `/vin-compare/` compares a VIN read from the vehicle with a VIN on paperwork locally in the browser. It does not establish authenticity.
+- `/rego-check-australia/` links to official rego lookup services for all eight Australian states and territories. These are external government services, not an embedded or scraped database.
+- `/vehicle-recall-check/` links to the Australian Government vehicle recall search and explains how to confirm VIN applicability with the manufacturer.
+- `/tools/` is a central directory for the available checks.
+
+These tools are static and do not need a database, account, paid API or scheduled content updates. Government service URLs can change, so verify the official links occasionally if you make a future release.
+
 ## What the VIN tool does
 
 - Checks the VIN text format in the browser.
@@ -41,6 +50,12 @@ This is **not** an official Australian vehicle-history service.
 - This tool does not check finance owing, stolen status, written-off status, odometer history, registration status, accident history or ownership.
 - For official Australian encumbrance, stolen and written-off information, use the Australian Government's PPSR CarCheck service: https://www.ppsr.gov.au/carcheck. Check its current fee and terms before use.
 - The RAV public search is a Register of Approved Vehicles search; it is not a general vehicle-history report.
+
+## One-time deployment configuration
+
+The actual site URL is not known at build time. Before submitting to search engines, replace `https://YOUR-DOMAIN.com` in all canonical tags, Open Graph URLs, structured data, `sitemap.xml` and `robots.txt` with the final GitHub Pages URL or custom domain. For a project repository, include `/REPOSITORY/` in the base URL. This is a one-time deployment setting, not a recurring content update.
+
+The internal navigation uses relative paths so it works on GitHub Pages project URLs as well as custom domains.
 
 ## Editing
 

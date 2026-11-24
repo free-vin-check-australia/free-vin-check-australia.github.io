@@ -16,4 +16,8 @@
 <url><loc>https://YOUR-DOMAIN.com/about/</loc><lastmod>2026-11-24</lastmod><priority>0.3</priority></url>
 <url><loc>https://YOUR-DOMAIN.com/privacy-policy/</loc><lastmod>2026-11-24</lastmod><priority>0.3</priority></url>
 <url><loc>https://YOUR-DOMAIN.com/disclaimer/</loc><lastmod>2026-11-24</lastmod><priority>0.3</priority></url>
+<url><loc>https://YOUR-DOMAIN.com/tools/</loc><lastmod>2026-11-24</lastmod><priority>0.7</priority></url>
+<url><loc>https://YOUR-DOMAIN.com/vin-compare/</loc><lastmod>2026-11-24</lastmod><priority>0.7</priority></url>
+<url><loc>https://YOUR-DOMAIN.com/rego-check-australia/</loc><lastmod>2026-11-24</lastmod><priority>0.7</priority></url>
+<url><loc>https://YOUR-DOMAIN.com/vehicle-recall-check/</loc><lastmod>2026-11-24</lastmod><priority>0.7</priority></url>
 </urlset>
