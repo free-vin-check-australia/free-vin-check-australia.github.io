@@ -121,4 +121,7 @@ This is an independent informational website and is not affiliated with the Aust
 
 
 ## Visual design update
-The homepage uses a locally hosted, optimised WebP vehicle illustration and a responsive dark navy/mint interface. No external font, image CDN or CSS framework is required. The vehicle artwork is illustrative and does not represent a decoded vehicle.
+The homepage uses a locally hosted, optimised WebP vehicle illustration and a responsive dark teal and bright mint-green interface inspired by the supplied reference layout. No external font, image CDN or CSS framework is required. The vehicle artwork is illustrative and does not represent a decoded vehicle.
+
+
+The homepage artwork is an original generated, unbranded vehicle illustration stored locally at `images/hero-green-car.webp`; it is decorative and does not depict a vehicle lookup result.

@@ -73,6 +73,7 @@ var requestSeq=0;
 
 function render(){
   var p=parse(input.value),v=p.v;
+  var toolPanel=$('tool'); if(toolPanel) toolPanel.classList.toggle('has-vin',!!v);
   count.textContent=v.length+' / 17';
   for(var i=0;i<17;i++){var ch=v[i]||'';cells[i].textContent=ch;cells[i].classList.toggle('on',!!ch);cells[i].classList.toggle('bad',/[IOQ]/.test(ch));}
   nextVin.textContent=v||'-';
@@ -144,7 +145,7 @@ function decode(v){
   })
   .then(function(){
     clearTimeout(to);
-    if(seq===requestSeq){activeController=null;btn.disabled=false;btn.classList.remove('is-loading');btn.removeAttribute('aria-busy');btn.textContent='Check & Decode VIN';}
+    if(seq===requestSeq){activeController=null;btn.disabled=false;btn.classList.remove('is-loading');btn.removeAttribute('aria-busy');btn.textContent='Start Search';}
   });
 }
 
@@ -156,12 +157,12 @@ input.addEventListener('input',function(){
     activeController=null;
     btn.disabled=false;
     btn.classList.remove('is-loading');btn.removeAttribute('aria-busy');
-    btn.textContent='Check & Decode VIN';
+    btn.textContent='Start Search';
   }
   render();
 });
 $('retryDecode').addEventListener('click',function(){var p=parse(input.value);if(p.v.length===17&&!p.banned.length&&!p.invalid.length) decode(p.v);});
-$('clear').addEventListener('click',function(){if(activeController){requestSeq++;try{activeController.abort()}catch(e){}activeController=null;}btn.disabled=false;btn.classList.remove('is-loading');btn.removeAttribute('aria-busy');btn.textContent='Check & Decode VIN';var retry=$('retryDecode');if(retry)retry.hidden=true;input.value='';lastDecoded='';render();input.focus()});
+$('clear').addEventListener('click',function(){if(activeController){requestSeq++;try{activeController.abort()}catch(e){}activeController=null;}btn.disabled=false;btn.classList.remove('is-loading');btn.removeAttribute('aria-busy');btn.textContent='Start Search';var retry=$('retryDecode');if(retry)retry.hidden=true;input.value='';lastDecoded='';render();input.focus()});
 $('example').addEventListener('click',function(){input.value='1HGCM82633A004352';render()});
 $('paste').addEventListener('click',function(){
   try{
