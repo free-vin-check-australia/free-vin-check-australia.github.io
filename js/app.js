@@ -99,7 +99,7 @@ function render(){
     var cd=checkDigit(v);
     if(cd===null) h+=item('Check digit','n/a','Can’t be calculated because of invalid characters.','var(--s-chk)');
     else if(cd===v[8]) h+=item('Check digit (ISO 3779)','Valid ('+cd+')','Character 9 matches the calculated value.','var(--good)');
-    else h+=item('Check digit (ISO 3779)','Calculated '+cd+', VIN has '+v[8],'Only North American VINs must pass. Many Australian, Japanese and European VINs don’t, so a mismatch alone is not a red flag.','var(--warn)');
+    else h+=item('Check digit (ISO 3779)','Calculated '+cd+', VIN has '+v[8],'Check-digit rules vary by market and manufacturer. A mismatch alone does not prove an Australian-market VIN is invalid.','var(--warn)');
   }
   results.innerHTML=h;
 }
@@ -110,48 +110,58 @@ function decode(v){
   var seq=++requestSeq;
   var ctl=typeof AbortController!=='undefined'?new AbortController():null;
   activeController=ctl;
+  var timedOut=false;
   lastDecoded=v;dGrid.innerHTML='';
-  showDecode('Looking up vehicle details','Requesting details from the NHTSA vPIC database. This can take a few seconds.','Source: NHTSA vPIC public API (United States).');
-  btn.disabled=true;var old='Check & Decode VIN';btn.textContent='Decoding...';
-  var to=setTimeout(function(){if(ctl)ctl.abort()},15000);
-  fetch(API+encodeURIComponent(v)+'?format=json',{headers:{Accept:'application/json'},signal:ctl?ctl.signal:undefined,cache:'no-store'})
-  .then(function(r){if(!r.ok) throw new Error('http');return r.json()})
+  var retry=$('retryDecode');if(retry)retry.hidden=true;
+  showDecode('Looking up vehicle details','Requesting additional vehicle specifications from the NHTSA vPIC database. This may take a few seconds.','Source: NHTSA vPIC (United States). This request sends the VIN to NHTSA.');
+  btn.disabled=true;btn.classList.add('is-loading');btn.setAttribute('aria-busy','true');btn.textContent='Decoding...';
+  var to=setTimeout(function(){timedOut=true;if(ctl){try{ctl.abort()}catch(e){}}},15000);
+  fetch(API+encodeURIComponent(v)+'?format=json',{headers:{Accept:'application/json'},signal:ctl?ctl.signal:undefined,cache:'no-store',mode:'cors'})
+  .then(function(r){
+    if(!r.ok){var err=new Error('http');err.status=r.status;err.retryAfter=r.headers&&r.headers.get('Retry-After');throw err;}
+    return r.json();
+  })
   .then(function(j){
     if(seq!==requestSeq||parse(input.value).v!==v) return;
     var data=j&&j.Results&&j.Results[0]; if(!data) throw new Error('shape');
     var f=pickFields(data);
-    if(!f.length){showDecode('No vehicle details returned','The VIN passed the format check, but NHTSA vPIC holds no useful record for it. It is a United States catalogue, so Australian-market models, older vehicles and some imports often return nothing. This does not mean the VIN is invalid. The maker and year codes above still apply.','Source: NHTSA vPIC public API. No PPSR or history search was performed.');return}
+    if(!f.length){showDecode('No vehicle details found','The VIN passed the local format check, but NHTSA vPIC returned no useful vehicle fields. vPIC is a United States manufacturer-submitted catalogue and does not cover every vehicle sold in Australia. Missing data does not mean the VIN is invalid.','Source: NHTSA vPIC. No PPSR, registration, theft or vehicle-history search was performed.');return;}
     var g='',cur='';
-    f.forEach(function(x){if(x.group!==cur){cur=x.group;g+='<div class="dlabel">'+esc(cur)+'</div>'}g+='<div class="ditem"><span>'+esc(x.label)+'</span><strong>'+esc(x.value)+'</strong></div>'});
+    f.forEach(function(x){if(x.group!==cur){cur=x.group;g+='<div class="dlabel">'+esc(cur)+'</div>';}g+='<div class="ditem"><span>'+esc(x.label)+'</span><strong>'+esc(x.value)+'</strong></div>';});
     dGrid.innerHTML=g;
-    showDecode('Vehicle details','Details returned by the NHTSA vPIC database. Confirm them against the vehicle, its compliance plate and its papers.','Source: NHTSA vPIC public API. This is not a PPSR or vehicle history search.');
+    showDecode('Vehicle specifications returned','These fields were returned by NHTSA vPIC. Availability and accuracy depend on the manufacturer data supplied to that US database. Cross-check the details against the vehicle and its compliance documents.','Source: NHTSA vPIC public API. This is not an Australian PPSR or vehicle-history search.');
   })
   .catch(function(e){
     if(seq!==requestSeq) return;
-    var slow=e&&e.name==='AbortError';
-    showDecode('Decode unavailable',slow?'The vehicle data service took too long to respond. The format check above still works. Please try again later.':'The vehicle data service could not be reached. The format check above still works. Check your connection and try again later.','No PPSR or history search was performed.');
+    var title='Vehicle lookup failed',msg='The NHTSA service could not be reached. Your local VIN format check is still available. Check your connection and try again later.';
+    if(timedOut||e&&e.name==='AbortError'){title='Vehicle lookup timed out';msg='NHTSA did not respond within 15 seconds. The local VIN check still works. Wait briefly and try again.';}
+    else if(e&&e.status===429){title='NHTSA rate limit reached';var waitText=e.retryAfter&&/^\d+$/.test(e.retryAfter)?(' Wait at least '+e.retryAfter+' seconds before retrying.'):' Wait 30–60 seconds before trying again.';msg='The NHTSA service is limiting requests right now.'+waitText+' Your local VIN check is unaffected.';}
+    else if(e&&e.status>=500){title='NHTSA service temporarily unavailable';msg='The NHTSA service returned a server error. The local VIN check still works. Please try again later.';}
+    else if(e&&e.status>=400){title='NHTSA could not process this lookup';msg='The NHTSA service returned an HTTP '+e.status+' response. Confirm the VIN and try again later.';}
+    else if(e&&(e.message==='shape'||e.name==='SyntaxError')){title='Unexpected response from NHTSA';msg='The service responded, but the result was not in the format expected. Your local VIN check still works. Try again later.';}
+    showDecode(title,msg,'No PPSR, registration, theft or vehicle-history search was performed.');
+    if(retry) retry.hidden=false;
   })
   .then(function(){
     clearTimeout(to);
-    if(seq===requestSeq){
-      activeController=null;
-      btn.disabled=false;
-      btn.textContent=old;
-    }
+    if(seq===requestSeq){activeController=null;btn.disabled=false;btn.classList.remove('is-loading');btn.removeAttribute('aria-busy');btn.textContent='Check & Decode VIN';}
   });
 }
 
 input.addEventListener('input',function(){
+  var retry=$('retryDecode');if(retry)retry.hidden=true;
   if(activeController){
     requestSeq++;
     try{activeController.abort()}catch(e){}
     activeController=null;
     btn.disabled=false;
+    btn.classList.remove('is-loading');btn.removeAttribute('aria-busy');
     btn.textContent='Check & Decode VIN';
   }
   render();
 });
-$('clear').addEventListener('click',function(){input.value='';lastDecoded='';render();input.focus()});
+$('retryDecode').addEventListener('click',function(){var p=parse(input.value);if(p.v.length===17&&!p.banned.length&&!p.invalid.length) decode(p.v);});
+$('clear').addEventListener('click',function(){if(activeController){requestSeq++;try{activeController.abort()}catch(e){}activeController=null;}btn.disabled=false;btn.classList.remove('is-loading');btn.removeAttribute('aria-busy');btn.textContent='Check & Decode VIN';var retry=$('retryDecode');if(retry)retry.hidden=true;input.value='';lastDecoded='';render();input.focus()});
 $('example').addEventListener('click',function(){input.value='1HGCM82633A004352';render()});
 $('paste').addEventListener('click',function(){
   try{
@@ -162,7 +172,7 @@ $('paste').addEventListener('click',function(){
 $('form').addEventListener('submit',function(e){
   e.preventDefault();
   var p=parse(input.value);input.value=p.v;render();
-  if(p.v.length!==17||p.banned.length||p.invalid.length){showDecode('Fix the VIN first','A decode needs a 17-character VIN containing only letters A–Z and numbers 0–9, with no I, O or Q. Check the status above.','No external request was made.');dGrid.innerHTML='';lastDecoded=p.v;return}
+  if(p.v.length!==17||p.banned.length||p.invalid.length){var why=p.invalid.length?'Remove invalid character(s): '+p.invalid.join(', ')+'. Only letters A–Z and numbers 0–9 are allowed (spaces and hyphens are ignored).':p.banned.length?'VINs cannot contain I, O or Q. Check whether one of these characters was misread as 1 or 0.':p.v.length<17?'A standard modern VIN has 17 characters. You have entered '+p.v.length+'. Older vehicles may have a shorter chassis number and need a different check.':'This entry has '+p.v.length+' characters. A standard modern VIN must have 17.';showDecode('VIN needs correction',why+' No request was sent to NHTSA.');dGrid.innerHTML='';lastDecoded=p.v;var retry=$('retryDecode');if(retry)retry.hidden=true;return}
   decode(p.v);
 });
 $('copy').addEventListener('click',function(){
