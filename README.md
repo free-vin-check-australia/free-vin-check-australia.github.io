@@ -118,3 +118,7 @@ This is an independent informational website and is not affiliated with the Aust
 - After deploying, test the live site in PageSpeed Insights for mobile and desktop field/lab data. Core Web Vitals are not something a local code inspection can certify; use Search Console's Core Web Vitals report after real-user data accumulates.
 - Confirm HTTPS is active on the GitHub Pages URL. Check desktop, tablet and mobile navigation, and the VIN checker in at least one current Chromium-based browser and one Safari/Firefox browser if available.
 - Before AdSense application, publish your real publisher identity and working contact email, then review the Privacy Policy again if you add ads, analytics, cookies or any third-party scripts.
+
+
+## Visual design update
+The homepage uses a locally hosted, optimised WebP vehicle illustration and a responsive dark navy/mint interface. No external font, image CDN or CSS framework is required. The vehicle artwork is illustrative and does not represent a decoded vehicle.
